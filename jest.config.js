@@ -2,10 +2,10 @@ module.exports = {
     preset: 'ts-jest',
     testEnvironment: 'node',
     modulePathIgnorePatterns: ["<rootDir>/dist/"],
-    globals: {
-        "ts-jest": {
+    transform: {
+        "^.+\\.tsx?$": ["ts-jest", {
             tsconfig: 'test/tsconfig.json',
             isolatedModules: true,
-        },
+        }],
     },
 };

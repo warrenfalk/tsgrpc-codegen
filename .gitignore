@@ -17,3 +17,5 @@ coverage/
 test/**/*.proto.gen.*
 !test/reference/**/*.proto.gen.*
 
+managed_context/
+test_suite_analysis/

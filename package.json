@@ -22,7 +22,6 @@
     "clean": "rimraf test/generated/!(surrogates.ts|.gitignore)",
     "gen:bootstrap": "grpc_tools_node_protoc --plugin=protoc-gen-tsgrpc=./cli.js -Iprotoc-proto --tsgrpc_out=./src protoc-proto/google/protobuf/descriptor.proto protoc-proto/google/protobuf/compiler/plugin.proto",
     "gen:test": "node protoc.js --recurse=test/proto --tsgrpc_out=./test/generated",
-    "gen:json": "node protoc.js --recurse=test/proto --tsgrpc_out=json:=./test/generated",
     "test:debug": "node --inspect-brk -r ../../.pnp.js $(yarn bin jest) --runInBand",
     "test": "jest --coverage",
     "postinstall": "node postinstall.js",
@@ -32,13 +31,12 @@
     "@babel/core": "^7.12.17",
     "@babel/preset-typescript": "^7.15.0",
     "@types/babel__core": "^7.1.15",
-    "@types/jest": "^26.0.22",
-    "@types/node": "^12",
-    "jest": "^26.6.3",
-    "rimraf": "^3.0.2",
-    "ts-jest": "^26.5.5",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.2.4"
+    "@types/jest": "^29.5.11",
+    "@types/node": "^20.11.10",
+    "jest": "^29.7.0",
+    "rimraf": "^5.0.5",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
     "assert-never": "^1.2.1",
