@@ -1,0 +1,54 @@
+{
+  "name": "tsgrpc-codegen",
+  "version": "0.11.0",
+  "main": "dist/protoc-gen-tsgrpc.js",
+  "types": "dist/protoc-gen-tsgrpc.d.ts",
+  "repository": "https://github.com/dmgtech/tsgrpc-codegen",
+  "author": "Warren Falk <warren@warrenfalk.com> (https://github.com/warrenfalk)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dmgtech/tsgrpc-codegen/issues"
+  },
+  "homepage": "https://github.com/dmgtech/tsgrpc-codegen#readme",
+  "files": [
+    "dist",
+    "!dist/.tsbuildinfo",
+    "cli.js",
+    "postinstall.js",
+    "protoc.js"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "rimraf test/generated/!(surrogates.ts|.gitignore)",
+    "gen:bootstrap": "grpc_tools_node_protoc --plugin=protoc-gen-tsgrpc=./cli.js -Iprotoc-proto --tsgrpc_out=./src protoc-proto/google/protobuf/descriptor.proto protoc-proto/google/protobuf/compiler/plugin.proto",
+    "gen:test": "node protoc.js --recurse=test/proto --tsgrpc_out=./test/generated",
+    "gen:json": "node protoc.js --recurse=test/proto --tsgrpc_out=json:=./test/generated",
+    "test:debug": "node --inspect-brk -r ../../.pnp.js $(yarn bin jest) --runInBand",
+    "test": "jest --coverage",
+    "postinstall": "node postinstall.js",
+    "prepublish": "tsc -b"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.17",
+    "@babel/preset-typescript": "^7.15.0",
+    "@types/babel__core": "^7.1.15",
+    "@types/jest": "^26.0.22",
+    "@types/node": "^12",
+    "jest": "^26.6.3",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.5.5",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "assert-never": "^1.2.1",
+    "change-case": "^4.1.1",
+    "grpc-tools": "^1.11.3",
+    "tsprotobuf-codec": "1.0.0"
+  },
+  "bin": {
+    "protoc-gen-tsgrpc": "./cli.js",
+    "protoc-tsgrpc": "./protoc.js"
+  },
+  "packageManager": "yarn@4.0.2"
+}
