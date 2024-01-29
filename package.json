@@ -42,13 +42,14 @@
   },
   "dependencies": {
     "assert-never": "^1.2.1",
-    "change-case": "^4.1.1",
-    "grpc-tools": "^1.11.3",
+    "change-case": "<5.0.0",
+    "grpc-tools": "^1.12.4",
+    "tslib": "^2.6.2",
     "tsprotobuf-codec": "1.0.0"
   },
   "bin": {
     "protoc-gen-tsgrpc": "./cli.js",
-    "protoc-tsgrpc": "./protoc.js"
+    "protoc-tsgrpc": "./protoc.mjs"
   },
   "packageManager": "yarn@4.0.2"
 }
